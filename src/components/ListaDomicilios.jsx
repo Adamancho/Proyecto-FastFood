@@ -8,7 +8,7 @@ function ListaDomicilio(props) {
   return (
       <ListGroup variant="flush">
         {props.domicilios.map((domicilioActual)=>
-            <ListGroup.Item  key={domicilioActual} >
+            <ListGroup.Item  key={domicilioActual.id} >
               <Domicilio direccion={domicilioActual.direccion} 
               id={domicilioActual.id} 
               precio={domicilioActual.precio} 

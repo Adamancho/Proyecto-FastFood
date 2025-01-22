@@ -11,6 +11,8 @@ function App() {
 
   const [idActual, cambiarIdActual] = useState(1);
 
+  const [cuentaEntregados, cambiarCuentaEntregados] = useState(0)
+
   function agregarNuevoDomicilio(domicilio){
     
     domicilio.id = idActual
@@ -27,6 +29,7 @@ function App() {
     
     const listaActualizada = domicilios.map(domicilioActual => {
       if (domicilioActual.id == id){
+        cambiarCuentaEntregados(cuentaEntregados+ parseInt(domicilioActual.precio))
         return {
           ... domicilioActual, entregado: true
         };
@@ -43,7 +46,7 @@ function App() {
     <>
       <NuevoDomicilioModal crearDomicilio={agregarNuevoDomicilio}/>
       <ListaDomicilio domicilios={domicilios} marcarComoEntregado={marcarComoEntregado}/>
-      <VentaTotal/>
+      <VentaTotal ventaTotal={cuentaEntregados}/>
     </>
   )
 }

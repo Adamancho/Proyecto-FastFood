@@ -34,12 +34,15 @@ function Domicilio(props) {
           popularLista(props.id, props.entregado) &&
           domiciliosEntregados.includes(props.id) &&
           //props.entregado &&
-          <CardText> Entregado </CardText>
-        } 
+          <CardText> <b><i>Entregado</i></b>  </CardText>
+        }
         
-        <Button variant="primary" onClick={() => marcarComoEntregado(props.id)}>
+        {
+          popularLista(props.id, props.entregado) &&
+          !domiciliosEntregados.includes(props.id) &&
+          <Button variant="primary" onClick={() => marcarComoEntregado(props.id)}>
           Marcar como entregado
-        </Button>       
+          </Button> }
       </Card.Body>
     </Card>
   );

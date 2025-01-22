@@ -31,7 +31,7 @@ function NuevoDomicilio(props) {
 
       <Form.Group className="mb-3">
         <Form.Label>Precio: </Form.Label>
-        <Form.Control as="textarea" rows={3} placeholder="Coloque aquí el precio del pedido" onChange={props.changePrecio} />
+        <Form.Control rows={1} type='number'  placeholder="Coloque aquí el precio del pedido" onChange={props.changePrecio} />
       </Form.Group>
 
       <Form.Group className="mb-3">
