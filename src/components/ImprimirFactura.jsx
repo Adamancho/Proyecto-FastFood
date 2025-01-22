@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
+
 
 const ImprimirFactura = (props) => {
 
+  
+  const [horaOprimida, setHoraOprimida] = useState(
+    new Date().toLocaleTimeString("es-CO", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true, 
+    timeZone: "America/Bogota", 
+  }));
+  
   const printDocument = () => {
+
+    /*const horaActual = 
+    setHoraOprimida(horaActual);*/
 
     const nuevoDomicilio={
       cliente: props.cliente,
@@ -13,7 +26,7 @@ const ImprimirFactura = (props) => {
       pedido: props.pedido,
       precio: props.precio
     }
-
+  
     props.crearDomicilio(nuevoDomicilio)
     const iframe = document.createElement('iframe');
     iframe.style.position = 'absolute';
@@ -71,6 +84,7 @@ const ImprimirFactura = (props) => {
           <h1>Las Sopitas</h1>
           <div class="company-info">
             <p>El Bremen, Mosquera</p>
+            <p> ${horaOprimida} </p>
           </div>
 
           <div class="client-info">
@@ -107,10 +121,11 @@ const ImprimirFactura = (props) => {
 
   return (
     <div>
-      <Button variant="primary" onClick={printDocument}>
-            Guardar e imprimir
-        </Button>
+      <Button variant="primary" onClick={printDocument}> Guardar e imprimir</Button>
+
     </div>
+      
+    
   );
 };
 

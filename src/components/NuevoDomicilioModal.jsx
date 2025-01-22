@@ -50,9 +50,11 @@ function NuevoDomicilioModal(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Nuevo domicilio
-      </Button>
+      <div className="d-flex justify-content-center mt-3">
+        <Button variant="primary" onClick={handleShow}>
+          Nuevo domicilio
+        </Button>
+      </div>
 
       <Modal show={visualizarModal} onHide={handleClose}>
         <Modal.Header closeButton>
