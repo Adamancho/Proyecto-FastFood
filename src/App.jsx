@@ -84,6 +84,21 @@ function App() {
   function marcarComoEliminado(id){
     const listaActualizada = domicilios.map(domicilioActual => {
       if (domicilioActual.id == id){
+        const deliveryToUpdateToBackend = {
+          "stateId": 3
+        }
+        const json = JSON.stringify(deliveryToUpdateToBackend);
+        console.log("json: ", json)
+        let urL = "https://myapp-475932199367.us-central1.run.app/delivery/"+id;
+        fetch(urL,
+          {
+            method: 'PUT',
+            body: json,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        )
         return {
           ... domicilioActual, eliminado: true
         };
@@ -98,6 +113,21 @@ function App() {
     const listaActualizada = domicilios.map(domicilioActual => {
       if (domicilioActual.id == id){
         cambiarCuentaEntregados(cuentaEntregados+ parseInt(domicilioActual.precio))
+        const deliveryToUpdateToBackend = {
+          "stateId": 2
+        }
+        const json = JSON.stringify(deliveryToUpdateToBackend);
+        console.log("json: ", json)
+        let urL = "https://myapp-475932199367.us-central1.run.app/delivery/"+id;
+        fetch(urL,
+          {
+            method: 'PUT',
+            body: json,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        )
         return {
           ... domicilioActual, entregado: true
         };
